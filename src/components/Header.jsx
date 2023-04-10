@@ -1,35 +1,14 @@
-import { UserAuth } from "../context/AuthContext";
-import { Nav } from "../styled";
-import { Link } from "react-router-dom";
+
+import imgHome from "../assets/fondo-home.jpg";
+import Nav from "./Nav";
+import { HeaderStyles } from "../styled";
 
 export default function Header() {
-  const { user, logOut } = UserAuth();
-
-  const cerrarSesion = async () => {
-    try {
-      await logOut();
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
+ 
   return (
-    <Nav>
-      <div>PHOTO</div>
-      <ul>
-        <li>inicio</li>
-        <li>galeria</li>
-        <li>contacto</li>
-      </ul>
-      {user ? (
-        <div>
-          <h5>{user.displayName}</h5>
-          <img src={user.photoURL} alt="" />
-          <button onClick={cerrarSesion}>Cerrar sesion</button>
-        </div>
-      ) :
-      <Link to={'/login'}>Inicia sesion</Link>
-      }
-    </Nav>
+    <HeaderStyles>
+      <Nav/>
+      <img className="img-header" src={imgHome} alt="" />
+    </HeaderStyles>
   );
 }

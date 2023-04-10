@@ -1,5 +1,5 @@
-import { Container } from "./styled";
-import { AuthContextProvider } from "./context/AuthContext";
+
+import { AuthContextProvider } from "./context/AuthContextProvider";
 import { MyRoutes } from "./routes/routes";
 import { GlobalStyle } from "./styled";
 
@@ -7,9 +7,9 @@ function App() {
   return (
     <AuthContextProvider>
       <GlobalStyle />
-      <Container>
+      <div className="app">
         <MyRoutes />
-      </Container>
+      </div>
     </AuthContextProvider>
   );
 }
