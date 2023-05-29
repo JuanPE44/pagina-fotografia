@@ -31,7 +31,7 @@ export const AuthContextProvider = ({ children }) => {
     console.log(response)
   };
 
-  const loginWithEmail = async (email, password) => {
+  const signWithEmail = async (email, password) => {
     const response = await signInWithEmailAndPassword(auth, email, password);
     console.log(response)
   };
@@ -46,7 +46,7 @@ export const AuthContextProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ registerWithEmail, loginWithEmail, googleSignIn, logOut, user }}>
+    <AuthContext.Provider value={{ registerWithEmail, signWithEmail, googleSignIn, logOut, user }}>
       {children}
     </AuthContext.Provider>
   );

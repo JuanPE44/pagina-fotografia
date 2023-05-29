@@ -30,13 +30,27 @@ export const Container = styled.div`
 export const Content = styled.main`
   position: relative;
   display: flex;
-  min-height: 200vh;
+  justify-content: center;
+  align-items: flex-start;
   z-index: 100;
 `;
 
 export const HeaderStyles = styled.header`
   position: relative;
-  min-height: 100vh;
+  min-height: ${(props) => (props.height ? props.height + "vh" : "100vh")};
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+  .title {
+    position: absolute;
+    color: ${colors.white};
+    font-size: 4rem;
+    letter-spacing: 0.1rem;
+    font-weight: 500;
+    margin-bottom: 3rem;
+    z-index: 100;
+  }
 
   &::before {
     content: "";
@@ -178,35 +192,37 @@ export const BotonRegister = styled(Link)`
 // ---- FORM ------------------------------->
 
 export const Form = styled.form`
+  padding: 4rem 3rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   min-width: 300px;
+  margin-top: 6rem;
 
-  h3 {
-    font-size: 3rem;
+  label {
+    font-size: 1.6rem;
+    color: ${colors.secondary};
+    font-weight: 600;
     text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 0.1rem;
-    font-weight: 300;
   }
 
   input {
     outline: none;
     border: none;
-    padding: 1.5rem 2rem;
-    font-size: 1.6rem;
+    padding: 1.5rem .5rem;
+    font-size: 1.7rem;
     font-weight: 500;
-    color: ${colors.white};
+    color: ${colors.secondary};
     transition: 0.1s;
     border-radius: 5px;
-    background: #0000006a;
+    border: 1px solid #2222223d;
 
     &:focus {
+      border: 1px solid ${colors.secondary};
     }
 
     &::placeholder {
-      color: ${colors.white};
+      color: ${colors.black};
       opacity: 0.6;
     }
   }
@@ -217,10 +233,10 @@ export const Form = styled.form`
     font-size: 1.8rem;
     padding: 1rem;
     font-weight: 500;
-    color: ${colors.secondary};
-    border: 2px solid ${colors.secondary};
-    background: transparent;
+    color: ${colors.white};
+    background: ${colors.secondary};
     cursor: pointer;
+    margin-top: 2rem;
     transition: 1s;
   }
 `;
@@ -228,20 +244,18 @@ export const Form = styled.form`
 export const ButtonGoogle = styled.button`
   cursor: pointer;
   border: none;
-  background: ${colors.white};
   width: 100%;
   display: flex;
   border-radius: 0.5rem;
   justify-content: center;
   align-items: center;
   padding: 0.5rem 2rem;
-  margin-top: 2rem;
-  background: #f0f0f0;
-  border: 2px solid ${colors.primary};
+  background: ${colors.primary};
 
   img {
     width: 3rem;
     height: 3rem;
     object-fit: contain;
+    background: transparent;
   }
 `;

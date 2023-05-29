@@ -10,14 +10,7 @@ export function MyRoutes() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route
-          path="/perfil"
-          element={
-            <ProtectorRutas ruta={"/login"}>
-              <Perfil />
-            </ProtectorRutas>
-          }
-        />
+        <Route path="/perfil" element={<Perfil />} />
       </Routes>
     </BrowserRouter>
   );

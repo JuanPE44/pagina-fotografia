@@ -5,6 +5,7 @@ import FormLogin from "../../components/FormLogin";
 import { Container, Content } from "../../styled";
 import fondoLogin from "../../assets/fondo-login.jpg";
 import Header from "../../components/Header";
+import Nav from "../../components/Nav";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -18,8 +19,10 @@ export default function Login() {
 
   return (
     <Container>
-      <img className="img-container" src={fondoLogin} alt="" />
-      <Header />
+      <Header img={fondoLogin} height={30}>
+        <Nav />
+        <h1 className="title">Iniciar sesion</h1>
+      </Header>
       <Content>
         <FormLogin />
       </Content>
