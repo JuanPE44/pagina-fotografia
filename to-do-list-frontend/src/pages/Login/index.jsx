@@ -3,7 +3,7 @@ import { useAuth } from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import FormLogin from "../../components/FormLogin";
 import { Container, Content } from "../../styled";
-import Nav from "../../components/Nav";
+import Header from "../../components/Header/Header";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -17,9 +17,7 @@ export default function Login() {
 
   return (
     <Container>
-      <header>
-        <Nav />
-      </header>
+      <Header />
       <Content>
         <FormLogin />
       </Content>

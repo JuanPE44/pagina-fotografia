@@ -1,9 +1,9 @@
 import "./home.scss";
-import Nav from "../../components/Nav";
+import Header from "../../components/Header/Header";
 import { useAuth } from "../../hooks/useAuth";
 import { useEffect } from "react";
-import { CreateTarea } from "./components/CreateTarea";
-import { ListOfTareas } from "./components/ListOfTareas";
+import { CreateTask } from "./components/CreateTask/CreateTask";
+import { ListOfTasks } from "./components/ListOfTasks/ListOfTasks";
 import { createUserDB } from "../../services/createUserDB";
 
 export default function Home() {
@@ -21,13 +21,11 @@ export default function Home() {
   }, [user]);
   return (
     <div className="home">
-      <header>
-        <Nav />
-      </header>
+      <Header />
       {user && (
         <div>
-          <CreateTarea />
-          <ListOfTareas />
+          <CreateTask />
+          <ListOfTasks />
         </div>
       )}
     </div>

@@ -1,29 +1,24 @@
+import "./Header.scss";
 import {
-  NavStyles,
   PerfilNav,
-  Logo,
   BotonLogIn,
   BotonRegister,
   MenuPerfil,
   ImagenPerfil,
-} from "../styled";
-import imgLogo from "../assets/logo-blanco.png";
+} from "../../styled";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useAuth } from "../hooks/useAuth";
+import { useAuth } from "../../hooks/useAuth";
 import { useState } from "react";
-import { useHandleSession } from "../hooks/useHandleSession";
+import { useHandleSession } from "../../hooks/useHandleSession";
 
-export default function Nav() {
+export default function Header() {
   const { user } = useAuth();
   const [abierto, setAbierto] = useState(false);
   const { logOutGoogle } = useHandleSession();
 
   return (
-    <NavStyles>
-      <Logo>
-        <img src={imgLogo} alt="" />
-      </Logo>
+    <header className="header">
       <h1>To-Do-List</h1>
       <PerfilNav>
         {user ? (
@@ -47,6 +42,6 @@ export default function Nav() {
           </>
         )}
       </PerfilNav>
-    </NavStyles>
+    </header>
   );
 }

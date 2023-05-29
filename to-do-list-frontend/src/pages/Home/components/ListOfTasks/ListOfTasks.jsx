@@ -1,7 +1,7 @@
-import { useTareas } from "../../../../hooks/useTareas";
-import "./ListOfTask.scss";
+import { useTareas } from "../../../../hooks/useTasks";
+import "./ListOfTasks.scss";
 
-export function ListOfTask() {
+export function ListOfTasks() {
   const { tareas } = useTareas();
   return (
     <ul className="tareas">
