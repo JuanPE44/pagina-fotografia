@@ -10,7 +10,7 @@ import {
 const router = Router();
 
 router.get("/tareas", getTareas);
-router.get("/tareas/:id", getTarea);
+router.get("/tareas/:idUsuario", getTarea);
 
 router.patch("/tareas/:id", updateTareas);
 

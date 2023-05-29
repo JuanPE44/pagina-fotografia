@@ -10,6 +10,7 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     font-family: 'Roboto', sans-serif;
     font-size: 62.5%;
+    background: #222;
   }
 
   a:link, a:visited, a:active {
@@ -209,7 +210,7 @@ export const Form = styled.form`
   input {
     outline: none;
     border: none;
-    padding: 1.5rem .5rem;
+    padding: 1.5rem 0.5rem;
     font-size: 1.7rem;
     font-weight: 500;
     color: ${colors.secondary};

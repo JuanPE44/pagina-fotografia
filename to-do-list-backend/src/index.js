@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import usuariosRoutes from "./routes/usuarios.routes.js";
 import tareasRoutes from "./routes/notas.routes.js";
 import indexRoute from "./routes/index.routes.js";
 
@@ -12,8 +13,9 @@ app.use(
 );
 app.use(express.json());
 
-app.use("/api", tareasRoutes);
 app.use("/api", indexRoute);
+app.use("/api", usuariosRoutes);
+app.use("/api", tareasRoutes);
 
 app.use((req, res, next) => {
   res.status(404).json({

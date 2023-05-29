@@ -11,7 +11,8 @@ import { auth } from "../services/firebase.config";
 import { AuthContext } from "./AuthContext";
 
 export const AuthContextProvider = ({ children }) => {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);
+  const [userDB, setUserDB] = useState(null);
 
   const googleSignIn = () => {
     const provider = new GoogleAuthProvider();
@@ -28,12 +29,12 @@ export const AuthContextProvider = ({ children }) => {
       email,
       password
     );
-    console.log(response)
+    console.log(response);
   };
 
   const signWithEmail = async (email, password) => {
     const response = await signInWithEmailAndPassword(auth, email, password);
-    console.log(response)
+    console.log(response);
   };
 
   useEffect(() => {
@@ -46,7 +47,17 @@ export const AuthContextProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ registerWithEmail, signWithEmail, googleSignIn, logOut, user }}>
+    <AuthContext.Provider
+      value={{
+        registerWithEmail,
+        signWithEmail,
+        googleSignIn,
+        logOut,
+        user,
+        userDB,
+        setUserDB,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

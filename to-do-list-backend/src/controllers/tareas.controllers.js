@@ -5,48 +5,44 @@ export const getTareas = async (req, res) => {
     const [tareas] = await pool.query("SELECT * FROM tareas");
     res.json(tareas);
   } catch (err) {
-    return res.status(500).json({ mensaje: "algo anduvo mal" });
+    return res.status(500).json({ error: err.message });
   }
 };
 
 export const getTarea = async (req, res) => {
-  const { id } = req.params;
+  const { idUsuario } = req.params;
 
   try {
-    const [tarea] = await pool.query(`SELECT * FROM WHERE tareas id = (?)`, [
-      id,
-    ]);
-    if (tarea.length <= 0)
-      return res.status(404).json({
-        mensaje: "tarea no encotrada",
-      });
-    res.json(tarea[0]);
+    const [tarea] = await pool.query(
+      `SELECT * FROM tareas WHERE id_usuario = ?`,
+      [idUsuario]
+    );
+    //if (tarea.length <= 0)
+    //  return res.status(404).json({
+    //    mensaje: "tarea no encotrada",
+    //  });
+    res.json(tarea);
   } catch (err) {
-    return res.status(500).json({ mensaje: "algo anduvo mal" });
+    return res.status(500).json({ error: err.message });
   }
 };
 
 export const createTarea = async (req, res) => {
-  const { descripcion } = req.body;
+  const { idUsuario, descripcion } = req.body;
 
   try {
-    const [filas] = await pool.query(
-      "INSERT INTO tareas (descripcion) VALUES (?)",
-      [descripcion]
+    const [newTarea] = await pool.query(
+      "INSERT INTO tareas (id_usuario, descripcion_tarea) VALUES (?,?)",
+      [idUsuario, descripcion]
     );
 
-    console.log(filas);
-
-    const [filas2] = await pool.query("SELECT * FROM tareas WHERE id = ?", [
-      filas.insertId,
-    ]);
+    const [tarea] = await pool.query(
+      "SELECT * FROM tareas WHERE id_tarea = ?",
+      [newTarea.insertId]
+    );
 
     // esto es para ver que nos devuelve la base de datos
-    res.json({
-      id: filas.insertId,
-      descripcion: descripcion,
-      fechaCreacion: filas2[0].fecha_creacion,
-    });
+    res.json(tarea);
   } catch (err) {
     return res.status(500).json({ mensaje: "algo anduvo mal" });
   }
@@ -58,7 +54,7 @@ export const updateTareas = async (req, res) => {
 
   try {
     const [results] = await pool.query(
-      "UPDATE tareas SET descripcion = IFNULL(?, descripcion), estado = IFNULL(?, estado) WHERE id = ?",
+      "UPDATE tareas SET descripcion_tarea = IFNULL(?, descripcion), estado_tarea = IFNULL(?, estado) WHERE id_tarea = ?",
       [descripcion, estado, id]
     );
     if (results.affectedRows === 0)
@@ -75,9 +71,10 @@ export const deleteTarea = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const [results] = await pool.query(`DELETE FROM tareas WHERE id = (?)`, [
-      id,
-    ]);
+    const [results] = await pool.query(
+      `DELETE FROM tareas WHERE id_tarea = (?)`,
+      [id]
+    );
 
     if (results.affectedRows <= 0)
       return res.status(404).json({

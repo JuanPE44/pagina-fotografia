@@ -3,8 +3,6 @@ import { useAuth } from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import FormLogin from "../../components/FormLogin";
 import { Container, Content } from "../../styled";
-import fondoLogin from "../../assets/fondo-login.jpg";
-import Header from "../../components/Header";
 import Nav from "../../components/Nav";
 
 export default function Login() {
@@ -19,10 +17,9 @@ export default function Login() {
 
   return (
     <Container>
-      <Header img={fondoLogin} height={30}>
+      <header>
         <Nav />
-        <h1 className="title">Iniciar sesion</h1>
-      </Header>
+      </header>
       <Content>
         <FormLogin />
       </Content>
