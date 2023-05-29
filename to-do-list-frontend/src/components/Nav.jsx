@@ -24,11 +24,7 @@ export default function Nav() {
       <Logo>
         <img src={imgLogo} alt="" />
       </Logo>
-      <ul>
-        <li>Inicio</li>
-        <li>Galeria</li>
-        <li>Contacto</li>
-      </ul>
+      <h1>To-Do-List</h1>
       <PerfilNav>
         {user ? (
           <>
