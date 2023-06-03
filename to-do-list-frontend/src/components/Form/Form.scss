@@ -1,0 +1,66 @@
+.form-container {
+  padding: 4rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  min-width: 300px;
+  margin-top: 6rem;
+
+  label {
+    font-size: 1.6rem;
+    color: #728ea6;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  input {
+    outline: none;
+    border: none;
+    padding: 1rem 1rem;
+    font-size: 1.7rem;
+    font-weight: 500;
+    color: #000;
+    transition: 0.1s;
+    border-radius: 0.4rem;
+    border: 1px solid #2222223d;
+
+    &:focus {
+      border: 1px solid #8c7561;
+    }
+
+    &::placeholder {
+      color: #000;
+      opacity: 0.6;
+    }
+  }
+
+  .boton-submit {
+    border-radius: 0.5rem;
+    font-size: 1.8rem;
+    padding: 1rem;
+    font-weight: 500;
+    color: #fff;
+    background: #728ea6;
+    cursor: pointer;
+    margin-top: 2rem;
+    transition: 1s;
+  }
+
+  .boton-google {
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    display: flex;
+    border-radius: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 2rem;
+
+    img {
+      width: 3rem;
+      height: 3rem;
+      object-fit: contain;
+      background: transparent;
+    }
+  }
+}

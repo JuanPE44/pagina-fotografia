@@ -1,16 +1,17 @@
-import { useTareas } from "../../../../hooks/useTasks";
+import { useTasksContext } from "../../../../hooks/useTasksContext";
 import "./ListOfTasks.scss";
 
 export function ListOfTasks() {
-  const { tareas } = useTareas();
+  const { tasks } = useTasksContext();
+
   return (
     <ul className="tareas">
-      {tareas &&
-        tareas.map((tarea) => {
+      {tasks &&
+        tasks.map((task) => {
           return (
-            <li className="tarea" key={tarea.id_tarea}>
-              <div>{tarea.id_tarea}</div>
-              <div>{tarea.descripcion_tarea}</div>
+            <li className="tarea" key={task.id_tarea}>
+              <div>{task.id_tarea}</div>
+              <div>{task.descripcion_tarea}</div>
             </li>
           );
         })}

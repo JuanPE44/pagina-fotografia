@@ -14,8 +14,10 @@ export async function postTarea(user, tarea) {
 
   try {
     const enviarTarea = fetch("http://localhost:8000/api/tareas", options);
-    const json = await enviarTarea;
-    console.log(json);
+    const response = (await enviarTarea).text();
+    const json = await response;
+    console.log(JSON.parse(json));
+    return JSON.parse(json);
   } catch (err) {
     console.log(err);
   }

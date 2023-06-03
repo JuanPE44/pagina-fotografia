@@ -42,7 +42,7 @@ export const createTarea = async (req, res) => {
     );
 
     // esto es para ver que nos devuelve la base de datos
-    res.json(tarea);
+    res.json(tarea[0]);
   } catch (err) {
     return res.status(500).json({ mensaje: "algo anduvo mal" });
   }

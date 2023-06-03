@@ -1,4 +1,3 @@
-
 import { AuthContextProvider } from "./context/AuthContextProvider";
 import { MyRoutes } from "./routes/routes";
 import { GlobalStyle } from "./styled";

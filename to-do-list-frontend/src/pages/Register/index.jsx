@@ -3,9 +3,9 @@ import { useAuth } from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import { Form } from "../../components/Form/Form";
 import { Header } from "../../components/Header/Header";
-import "./Login.scss";
+import "./Register.scss";
 
-export default function Login() {
+export default function Register() {
   const navigate = useNavigate();
   const { user } = useAuth();
 
@@ -16,9 +16,9 @@ export default function Login() {
   }, [user]);
 
   return (
-    <div className="login-container">
+    <div className="register-container">
       <Header />
-      <Form login={true} />
+      <Form login={false} />
     </div>
   );
 }
