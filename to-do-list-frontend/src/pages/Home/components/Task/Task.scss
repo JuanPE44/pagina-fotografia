@@ -1,0 +1,24 @@
+.tarea {
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  gap: 1rem;
+  text-decoration: none;
+  padding: 1rem 1rem;
+  border-radius: 0.4rem;
+  font-size: 1.8rem;
+  background: #fff;
+
+  .estado {
+    flex-grow: 0;
+  }
+
+  .descripcion {
+    flex-grow: 1;
+  }
+
+  .delete {
+    flex-grow: 0;
+  }
+}

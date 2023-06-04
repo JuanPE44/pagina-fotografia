@@ -25,7 +25,7 @@ export default function Home() {
       <TasksContextProvider>
         <Header />
         {user && (
-          <div>
+          <div className="tareas-container">
             <CreateTask />
             <ListOfTasks />
           </div>

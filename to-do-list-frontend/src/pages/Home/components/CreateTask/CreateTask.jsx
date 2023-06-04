@@ -13,13 +13,11 @@ export function CreateTask() {
   };
 
   return (
-    <div>
-      <div className="contenedor-create">
-        <input type="text" onChange={(e) => setTarea(e.target.value)} />
-        <button type="button" onClick={handleAddTask}>
-          crear tarea
-        </button>
-      </div>
+    <div className="contenedor-create">
+      <input type="text" onChange={(e) => setTarea(e.target.value)} />
+      <button type="button" onClick={handleAddTask}>
+        +
+      </button>
     </div>
   );
 }

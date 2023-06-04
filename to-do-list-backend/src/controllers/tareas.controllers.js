@@ -68,7 +68,8 @@ export const updateTareas = async (req, res) => {
 };
 
 export const deleteTarea = async (req, res) => {
-  const { idTarea, idUsuario } = req.params;
+  const { idTarea } = req.params;
+  const { idUsuario } = req.body;
 
   try {
     const [results] = await pool.query(

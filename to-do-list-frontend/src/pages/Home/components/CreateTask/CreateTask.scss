@@ -1,16 +1,29 @@
 .contenedor-create {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
   input {
+    flex-grow: 1;
     font-size: 1.5rem;
     outline: none;
     border: none;
     padding: 1rem 2rem;
+    border-radius: 0.4rem;
   }
 
   button {
+    flex-grow: 0;
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: #fff;
-    background: #000;
+    background: #386fe6;
     padding: 1rem;
-    font-size: 1.5rem;
+    font-size: 2rem;
+    font-weight: 700;
+    border-radius: 50%;
     border: none;
   }
 }

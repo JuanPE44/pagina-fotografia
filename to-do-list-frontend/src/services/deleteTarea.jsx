@@ -1,6 +1,5 @@
 export async function deleteTarea(idTarea, user) {
   const data = {
-    idTarea: idTarea,
     idUsuario: user.reloadUserInfo.localId,
   };
 
@@ -13,7 +12,10 @@ export async function deleteTarea(idTarea, user) {
   };
 
   try {
-    const enviarTarea = fetch("http://localhost:8000/api/tareas", options);
+    const enviarTarea = fetch(
+      `http://localhost:8000/api/tareas/${idTarea}`,
+      options
+    );
     const response = (await enviarTarea).text();
     const json = await response;
     console.log(JSON.parse(json));

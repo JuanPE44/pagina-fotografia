@@ -16,6 +16,6 @@ router.patch("/tareas/:id", updateTareas);
 
 router.post("/tareas", createTarea);
 
-router.delete("/tareas/:id", deleteTarea);
+router.delete("/tareas/:idTarea", deleteTarea);
 
 export default router;
