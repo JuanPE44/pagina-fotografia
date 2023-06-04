@@ -68,19 +68,24 @@ export const updateTareas = async (req, res) => {
 };
 
 export const deleteTarea = async (req, res) => {
-  const { id } = req.params;
+  const { idTarea, idUsuario } = req.params;
 
   try {
     const [results] = await pool.query(
       `DELETE FROM tareas WHERE id_tarea = (?)`,
-      [id]
+      [idTarea]
+    );
+
+    const [tareas] = await pool.query(
+      "SELECT * FROM tareas WHERE id_usuario = ?",
+      [idUsuario]
     );
 
     if (results.affectedRows <= 0)
       return res.status(404).json({
         mensaje: "tarea no encotrada",
       });
-    res.sendStatus(204);
+    res.json(tareas);
   } catch (err) {
     return res.status(500).json({ mensaje: "algo anduvo mal" });
   }

@@ -7,7 +7,6 @@ import { useHandleSession } from "../../hooks/useHandleSession";
 import perfilImg from "../../assets/imgs/perfil.jpg";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
 
 export function Header() {
   const { user } = useAuth();
@@ -18,7 +17,7 @@ export function Header() {
     <header className="header">
       <h1>To-Do-List</h1>
       <div className="perfil-header">
-        {user ? (
+        {user && (
           <>
             <motion.div
               className="imagen-perfil"
@@ -32,15 +31,6 @@ export function Header() {
             <MenuPerfil abierto={abierto}>
               <button onClick={() => logOutGoogle()}>Cerrar sesion</button>
             </MenuPerfil>
-          </>
-        ) : (
-          <>
-            <Link className="button-login" to={"/login"}>
-              Inicia sesion
-            </Link>
-            <Link className="button-register" to={"/register"}>
-              Registrate
-            </Link>
           </>
         )}
       </div>

@@ -1,6 +1,7 @@
 import React, { createContext, useState, useEffect } from "react";
 import { getTareas } from "../services/getTareas";
 import { postTarea } from "../services/postTarea";
+import { deleteTarea } from "../services/deleteTarea";
 import { useAuth } from "../hooks/useAuth";
 
 export const TasksContext = createContext();
@@ -14,6 +15,11 @@ export function TasksContextProvider({ children }) {
     setTasks((prevTask) => [...prevTask, newTask]);
   };
 
+  const deleteTask = async (idtarea) => {
+    const newTasks = await deleteTarea(idtarea, user);
+    setTasks(newTasks);
+  };
+
   useEffect(() => {
     if (user) {
       getTareas(user.reloadUserInfo.localId).then((res) => setTasks(res));
@@ -21,7 +27,7 @@ export function TasksContextProvider({ children }) {
   }, []);
 
   return (
-    <TasksContext.Provider value={{ tasks, createTask }}>
+    <TasksContext.Provider value={{ tasks, createTask, deleteTask }}>
       {children}
     </TasksContext.Provider>
   );

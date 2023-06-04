@@ -2,25 +2,28 @@ import { useState } from "react";
 import { useAuth } from "../../hooks/useAuth";
 import logoGoogle from "../../assets/google.png";
 import { useHandleSession } from "../../hooks/useHandleSession";
+import { Link } from "react-router-dom";
 import "./Form.scss";
 
 export function Form({ login }) {
-  const { signWithEmail, registerWithEmail } = useAuth();
+  const { signWithEmail, registerWithEmail, errorAuth, setErrorAuth } =
+    useAuth();
   const { signInGoogle } = useHandleSession();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setErrorAuth(null);
     login ? signWithEmail(email, password) : registerWithEmail(email, password);
     console.log(email, password);
   };
 
   return (
     <form className="form-container">
-      <label htmlFor="email">
-        {login ? "Ingresa" : "Registrate ahora"} ahora:
-      </label>
+      <h2 className="subtitle-form">
+        {login ? "Ingresa" : "Registrate"} ahora:
+      </h2>
       <input
         id="email"
         onChange={(e) => setEmail(e.target.value)}
@@ -33,6 +36,7 @@ export function Form({ login }) {
         type="password"
         placeholder="Ingrese la contraseña.."
       />
+      {errorAuth && <p className="error">{errorAuth}</p>}
       <button className="boton-submit" onClick={(e) => handleSubmit(e)}>
         {login ? "Iniciar sesion" : "Registrate"}
       </button>
@@ -43,6 +47,15 @@ export function Form({ login }) {
       >
         <img src={logoGoogle} alt="" />
       </button>
+      {login ? (
+        <p className="cuenta">
+          ¿No tenes una cuenta? <Link to="/register">Registrate</Link>
+        </p>
+      ) : (
+        <p className="cuenta">
+          ¿Ya tenes una cuenta? <Link to="/login">Inicia sesión</Link>
+        </p>
+      )}
     </form>
   );
 }
